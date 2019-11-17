@@ -68,7 +68,6 @@ footer {
   font-weight: 500;
 }
 
-
 .clearfix:after {
   visibility: hidden;
   display: block;
@@ -81,4 +80,13 @@ footer {
 .name {
   color: #F15B31;
   font-weight: 700
+}
+
+.refreshButton {
+  background-color: #F15B31;
+  padding: 9px 23px;
+  color: #FFFFFF;
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+  font-size: 15px;
 }

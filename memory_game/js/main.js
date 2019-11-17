@@ -32,22 +32,44 @@ let cards = [
 //empty array to hold cards in play
 cardsInPlay = [];
 
+//function to check for card matching or not
 function checkForMatch() {
+  //if cardOne = to CardTwo then it's a match
   if (cardsInPlay[0] === cardsInPlay[1]) {
     alert("You found a match!");
   } else {
     alert("Sorry, try again.");
-  }
-}
+  };
+};
 
-function flipCard(cardId) {
-  console.log("User flipped " + cards[cardId].rank);
+//function to flip the cards
+function flipCard() {
+  let cardId = this.getAttribute('data-id');
+  // console.log("User flipped " + cards[cardId].rank);
 
   cardsInPlay.push(cards[cardId].rank);
-  console.log(cards[cardId].suit);
-  console.log(cards[cardId].cardImage);
-  checkForMatch();
+  // console.log(cards[cardId].suit);
+  // console.log(cards[cardId].cardImage);
+  this.setAttribute('src', cards[cardId].cardImage);
+  if (cardsInPlay.length === 2) {
+    checkForMatch();
+  }
+};
+
+function createBoard() {
+  let cardBoard = document.getElementById('game-board');
+  for (var i = 0; i < cards.length; i++) {
+    let cardElement = document.createElement('img');
+    cardElement.setAttribute('src', 'images/back.png');
+    cardElement.setAttribute('data-id', i);
+    cardElement.addEventListener('click', flipCard);
+    cardBoard.appendChild(cardElement);
+  }
+};
+
+//function for button when onClick is triggered to refresh the page to play a new game
+function refreshGame() {
+  window.location.reload();
 }
 
-flipCard(0);
-flipCard(2);
+createBoard();
